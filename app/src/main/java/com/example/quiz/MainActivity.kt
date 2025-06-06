@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,8 +25,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             QuizTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    CurrentScreenMethod()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    CurrentScreenMethod(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -37,7 +38,7 @@ by using the three different states of the quiz (start, quiz, end) and implement
 into methods within the classes. Each time the method is triggered, the current state changes. We
 are also saving the finalScore of right answered questions for the endscreen and the highscore*/
 @Composable
-fun CurrentScreenMethod() {
+fun CurrentScreenMethod(modifier: Modifier) {
     var currentScreen by remember { mutableStateOf(QuizScreen.START) }
     var finalScore by remember { mutableIntStateOf(0) }
     var highScore by remember { mutableIntStateOf(0) }
@@ -63,6 +64,6 @@ fun CurrentScreenMethod() {
 @Composable
 fun GreetingPreview() {
     QuizTheme {
-        CurrentScreenMethod()
+        CurrentScreenMethod(modifier = Modifier)
     }
 }
