@@ -1,7 +1,5 @@
 package com.example.quiz
 
-import EndScreen
-import StartScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
